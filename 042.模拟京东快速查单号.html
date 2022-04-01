@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+        }
+        #text {display: none;position: absolute;border:1px solid #ccc;}
+        input {margin-top: 30px;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span id="text"></span>
+        <input type="text" value=""/>
+    </div>
+    <script>
+        let inp = document.querySelector('input');
+        let text = document.getElementById('text');
+        inp.addEventListener('keyup', function() {
+            text.innerHTML = this.value
+            if(this.value !== '') {
+                text.style.display = 'block';
+            } else {
+                text.style.display = 'none'
+            }
+        })
+        inp.addEventListener('blur', function(){
+            text.style.display = 'none'
+        })
+        inp.addEventListener('focus', function(){
+            if(inp.value !== '') {
+                text.style.display = 'block'
+            }
+        })
+    </script>
+</body>
+</html>

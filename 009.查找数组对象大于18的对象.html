@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        题目：查找数组对象中age大于18对象，
+        编下函数filterAdult,满足
+        filterAdult([
+            {age: 19, name: 'jack'},
+            {age: 5, name: 'apple'},
+            {age: 12, name: 'lynn'},
+            {age: 25, name: 'david'}
+        ]);
+    -->
+    <script>
+        function filterAdult(arr) {
+            let arrSelect = []
+            for(item in arr) {
+                if(arr[item].age > 18) {
+                    arrSelect.push(arr[item])
+                }
+            }
+            return arrSelect
+        }
+        filterAdult([
+            {age: 19, name: 'jack'},
+            {age: 5, name: 'apple'},
+            {age: 12, name: 'lynn'},
+            {age: 25, name: 'david'}
+        ])
+    </script>
+</body>
+</html>

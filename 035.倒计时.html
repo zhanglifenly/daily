@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 换算公式
+        d = parseInt(总秒数/ 60/ 60/ 24)
+        h = parseInt(总秒数/ 60/ 60% 24)
+        m = parseInt(总秒数/ 60% 60)
+        s = parseInt(总秒数 % 60)
+    -->
+    <script>
+        function format(time) {
+            let nowTime = +new Date() // 返回的是当前时间总的毫秒数
+            let inputTime = +new Date(time)
+            let times = (inputTime - nowTime) / 1000
+            if (times <= 0) { return '活动已结束' }
+            let d = parseInt(times / 60 / 60 / 24)
+            d = d > 10 ? d : '0' + d
+            let h = parseInt(times / 60 / 60 % 24)
+            h = h > 10 ? h : '0' + h
+            let m = parseInt(times / 60 % 60)
+            m = m > 10 ? m : '0' + m
+            let s = parseInt(times % 60)
+            s = s > 10 ? s : '0' + s
+            return d + ':' + h + ':' + m + ':' + s
+        }
+        console.log(format('2022-1-13 14:35:00'))
+    </script>
+</body>
+
+</html>

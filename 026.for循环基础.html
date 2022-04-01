@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1、1-100 平均值
+        function average(){
+            let sum = 0;
+            for(let i = 0; i<= 100; i++){
+                sum += i
+            }
+            console.log(sum/100)
+        }
+        average()
+        
+        // 2、 1-100 的偶数和奇数和
+        function sum() {
+            let sum1=0;
+            let sum2 =0;
+            for(let i=0; i<=100; i++){
+                if(i%2 == 0) {
+                    sum1+=i
+                }else {
+                    sum2+=i
+                }
+            }
+            console.log('奇数：'+sum2+'偶数：'+sum1)
+        }
+        sum()
+        // 3、 1-100能被3整除的数字和
+        function chu() {
+            let sum = 0;
+            for(let i=0; i<=100; i++){
+                if(i%3==0){
+                    sum+=i
+                }
+            }
+            console.log(sum)
+        }
+        chu()
+    
+        // 求学生成绩
+        // let result = prompt('输入学生人数')
+        
+        function students() {
+            let sum =0;
+            for(let i=1; i<=result; i++){
+                let cj = prompt('请输入第'+i+'学生成绩')
+                sum+=parseInt(cj)
+                
+            }
+            console.log('总分：'+sum,'平均分：'+sum/result)
+        }
+        // students()
+        
+        // 星星打印★
+        
+        function start() {
+            let str = ''
+            for(let i = 0; i<5;i++) {
+                for(let j=0;j<5-i;j++){
+                    str += '★'
+                }
+                str+='\n'
+            }
+            console.log(str)
+        }
+        start()
+
+        // 九九乘法表
+        
+        function mul() {
+            let str= ''
+            for(let i = 1; i<=9; i++) {
+                for(let j=1; j<=i;j++){
+                    document.write(j+'x'+i+ '=' + i*j +'&nbsp;&nbsp;&nbsp;')
+                }
+                document.write('<br />')
+            }
+        }
+        mul()
+    </script>
+</body>
+</html>

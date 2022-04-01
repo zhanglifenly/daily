@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="1">
+        <thead>
+            <th><input type="checkbox" id="checkall" />全选</th>
+            <th>喜欢的运动</th>
+        </thead>
+        <tbody id="tbody">
+            <tr>
+                <td><input type="checkbox" /></td>
+                <td>篮球</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" /></td>
+                <td>足球</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        let call = document.getElementById('checkall');
+        let tbody = document.getElementById('tbody');
+        let c_tbs = tbody.getElementsByTagName('input');
+        call.onclick = function () {
+            for (let i = 0; i < c_tbs.length; i++) {
+                c_tbs[i].checked = this.checked
+            }
+        }
+        for (let i = 0; i < c_tbs.length; i++) {
+            c_tbs[i].onclick = function () {
+                // flag控制全选按钮是否选中
+                let flag = true;
+                // 每次点击下面复选框都要检查循环是否全选中
+                for(let i = 0 ; i<c_tbs.length; i++) {
+                    if (!c_tbs[i].checked){ 
+                        flag = false
+                    }
+                }
+                call.checked = flag
+            }
+        }
+    </script>
+</body>
+
+</html>

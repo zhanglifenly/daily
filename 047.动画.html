@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{margin-bottom: 20px;}
+        .box{width: 200px;height: 200px;background-color: pink;position: absolute;left: 0;}
+    </style>
+</head>
+<body>
+    <button class="btn500">开始 - 500</button>
+    <button class="btn800">开始 - 800</button>
+    <div class="box"></div>
+    <script>
+        let moveDiv = document.querySelector('div');
+        let btn500 = document.querySelector('.btn500');
+        let btn800 = document.querySelector('.btn800');
+        btn500.addEventListener('click', function(){
+            animate(moveDiv, 500)
+        })
+        btn800.addEventListener('click', function(){
+            animate(moveDiv, 800, function(){
+                moveDiv.style.background = 'yellow'
+            })
+        })
+        function animate(obj, target, callback) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function() {
+                let step = (target - obj.offsetLeft )/10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if(obj.offsetLeft == target ) {
+                    clearInterval(obj.timer);
+                    if(callback){
+                        callback()
+                    }
+                }
+                obj.style.left = obj.offsetLeft + step + 'px';
+            }, 15)
+        }
+    </script>
+</body>
+</html>

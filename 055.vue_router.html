@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 0、引入(不是模块化的情况)  vue2.x route3.x-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <!-- 2、连接地址 -->
+            <!-- 通过to指定跳转的连接 -->
+            <!-- router-link 默认会被渲染成一个a标签 -->
+            <router-link to="/foo">Go to Foo</router-link>
+            <router-link to="/bar">Go to Bar</router-link>
+        </p>
+        <!-- 3、路由匹配的组件渲染在这里 -->
+        <!-- 路由的出口 -->
+        <router-view></router-view>
+    </div>
+    <script>
+        // 0、如果使用模块化机制变成，导入Vue和VueRouter,要调用Vue.use(VueRouter)
+        // 1、定义（路由）组件
+        // 可以从其他文件import进来
+        const Foo = {template: '<div>foo</div>'}
+        const Bar = {template: '<div>bar</div>'}
+        // 2、定义路由
+        // 每个路由应该映射一个组件。其中component可以是
+        // 通过Vue.extend()创建的组件构造器
+        // 也可以是，只是一个组件配置对象
+        const routes = [
+            {path: '/foo', component: Foo},
+            {path: '/bar', component: Bar}
+        ]
+        // 3、创建router实例，然后传routes配置
+        const router = new VueRouter({
+            routes
+        })
+        // 4、创建和挂载根实例
+        const app = new Vue({
+            router
+        }).$mount('#app')
+
+        // 现在可以启动了！
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #login {position: fixed;left: 50%;top: 50%;width: 400px;height: 300px;text-align: center;border:1px solid #f1f1f1;z-index: 99;background: #fff;display: none;transform: translate(-50%, -50%);}
+        #title{height: 60px;line-height: 60px;background: #f1f1f1;cursor: move;}
+        li{list-style: none;padding:10px;}
+        #mask{background-color: rgba(0,0,0,.5);position: fixed;top: 0;bottom: 0;left: 0;right: 0;display: none;}
+        #close{position: absolute;right: 0;top: 0;}
+    </style>
+</head>
+<body>
+    <button id="open">打开</button>
+    <div id="login">
+        <a href="javascript:;" id="close">关闭</a>
+        <div id="title">登录</div>
+        <ul class="form">
+            <li>
+                用户名： <input type="text"/>
+            </li>
+            <li>
+                密码 <input type="text"/>
+            </li>
+        </ul>
+    </div>
+    <div id="mask"></div>
+    <script>
+        let openbtn = document.querySelector("#open");
+        let login = document.querySelector("#login");
+        let mask = document.querySelector("#mask");
+        let closebtn = document.querySelector("#close");
+        let title = document.querySelector("#title");
+        
+        // 1、 打开弹窗
+        openbtn.onclick = function() {
+            login.style.display = "block";
+            mask.style.display = "block";
+            
+        }
+        // 2、 关闭弹窗
+        closebtn.onclick = function() {
+            login.style.display = "none";
+            mask.style.display = "none";
+        }
+        // 3、鼠标按下，获得鼠标在盒子内的坐标。
+        title.addEventListener("mousedown", function(e){
+            var x = e.pageX - login.offsetLeft;
+            var y = e.pageY - login.offsetTop;
+            console.log(e.pageX, login.offsetLeft)
+            document.addEventListener("mousemove", move)
+            function move(e) {
+                let xx = e.pageX - x;
+                let yy = e.pageY - y;
+                if(xx <= 0 ) {
+                    xx = 0
+                }else if(xx > mask.offsetWidth - login.offsetWidth) {
+                    xx = mask.offsetWidth - login.offsetWidth
+                }
+                if(yy <= 0 ) {
+                    yy = 0
+                }else if(yy > mask.offsetHeight - login.offsetHeight) {
+                    yy = mask.offsetHeight - login.offsetHeight
+                }
+                login.style.left = xx + 'px';
+                login.style.top = yy + 'px';
+            }
+            document.addEventListener("mouseup", function(){
+                document.removeEventListener("mousemove", move)
+            })
+        })
+    </script>
+</body>
+</html>

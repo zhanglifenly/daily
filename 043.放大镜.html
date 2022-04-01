@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .nb{width: 900px;margin:0 auto;} */
+        .left{position: relative;width: 400px;}
+        #block {width: 300px;height: 300px;opacity: .5;position: absolute;background: #000;top: 0;left: 0;cursor: move;}
+        #smallimg {width:100%;border:1px solid #ccc;}
+        .bigbox{width: 500px;height: 500px;background: #ccc;position: absolute;left: 410px;top: 0;overflow: hidden;border:1px solid #000;display: none;}
+        #bigimg{position: absolute;}
+    </style>
+</head>
+<body>
+    <div class="nb">
+        <div class="left">
+            <div class="smallbox">
+                <img id="smallimg" src="imgs/12.png"/>
+                <div id="block"></div>
+            </div>
+            
+            <div class="bigbox">
+                <img id="bigimg" src="imgs/12_big.jpg"/>
+            </div>
+        </div>
+    </div>
+    <script>
+        let block = document.getElementById('block');
+        let smallbox = document.querySelector('.smallbox');
+        let bigbox = document.querySelector('.bigbox');
+        let bigimg = document.getElementById('bigimg');
+        let smallimg = document.getElementById('smallimg')
+        smallbox.addEventListener('mousemove', function(e) {
+            // 1、鼠标进入放大镜，显示放大大盒子
+            bigbox.style.display = 'block';     
+            let x = e.pageX - block.offsetWidth/2;
+            let y = e.pageY - block.offsetHeight/2;
+            let smallMax = smallbox.offsetWidth - block.offsetWidth // 因为是正方形，所以计算宽度也等于计算了高度
+            if(x < 0 ) {
+                x = 0;
+            } else if( x >= smallMax) {
+                x = smallMax
+            }
+            if(y < 0) {
+                y = 0;
+            } else if(y >= smallMax) {
+                y = smallMax
+            }
+            
+            block.style.left = x + 'px';
+            block.style.top = y + 'px';
+            // 3、计算大图的偏移量
+            // 大图片的移动距离 = 遮挡层移动距离 * 大图片最大移动距离 / 遮挡层的最大移动距离
+            let bigMax = bigimg.offsetWidth - bigbox.offsetWidth;
+            console.log(bigbox.offsetWidth,smallimg.offsetWidth, 'big')
+            let bigX =  x * bigMax / smallMax; 
+            let bigY =  y * bigMax / smallMax; 
+            bigimg.style.left = -bigX + 'px';
+            bigimg.style.top = -bigY + 'px';
+        })
+        // 2、鼠标离开放大镜，显示放大大盒子
+        smallbox.addEventListener('mouseout', function() {
+            bigbox.style.display = 'none'
+        })
+    </script>
+</body>
+</html>

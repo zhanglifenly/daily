@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{text-decoration: none;width: 100px;border:1px solid #ccc;display: inline-block;color:#000;text-align: center;}
+        a.active{background: red;color:#fff;}
+        ul li {display: none;}
+    </style>
+</head>
+<body>
+    <div>
+        <a class="active" href="javascript:;">tab1</a>
+        <a href="javascript:;">tab2</a>
+        <a href="javascript:;">tab3</a>
+    </div>
+    <ul>
+        <li style="display: block;">我是11111</li>
+        <li>我是22222</li>
+        <li>我是33333</li>
+    </ul>
+    <script>
+        let as = document.querySelectorAll('a');
+        let lis = document.querySelectorAll('li');
+        console.log(as)
+        for(let i = 0; i < as.length; i++) {
+            // as[i].setAttribute('data-index', i)
+            as[i].onclick = function() {
+                for(let i = 0; i<as.length; i++) {
+                    as[i].className = '';
+                    lis[i].style.display = 'none'
+                }
+                as[i].className = 'active';
+                lis[i].style.display = 'block'
+            }
+        }
+    </script>
+</body>
+</html>

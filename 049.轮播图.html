@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/animate.js"></script>
+    <style>
+        body,div,li,a,ul,ol{padding:0;margin:0;}
+        ol,ul,li{list-style: none;}
+        
+        .banner {position: relative;overflow: hidden;width: 750px;}
+        .bd{height: 264px;}
+        .bd ul{width: 600%;overflow: hidden;clear: both;position: absolute;}
+        .bd ul li{float: left;}
+        .banner img{width: 100%;}
+        .banner .hd{position: absolute;left: 0;right: 0;text-align: center;bottom: 20px;z-index: 2;}
+        .banner .hd li{width: 8px;height: 8px;border:2px solid #fff;border-radius: 50%;display: inline-block;cursor: pointer;margin:0 4px;}
+        .banner .hd li.on{background-color: #fff;}
+        .banner .bd li{width: 750px;}
+        .banner .arrow a{position: absolute;top:48%;background-color: #fff;font-size: 20px;display: block;width: 40px;height: 40px;line-height: 40px;text-align: center;display: none;z-index: 2;}
+        .banner .arrow .arrow_l{left: 0;}
+        .banner .arrow .arrow_r{right: 0;}
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <ol class="hd">
+        </ol>
+        <div class="arrow">
+            <a href="javascript:;" class="arrow_l">&lAarr;</a>
+            <a href="javascript:;" class="arrow_r">&rAarr;</a>
+        </div>
+        <div class="bd">
+            <ul>
+                <li><img src="imgs/1.jpg" alt="" srcset=""></li>
+                <li><img src="imgs/2.jpg" alt="" srcset=""></li>
+                <li><img src="imgs/3.jpg" alt="" srcset=""></li>
+                <li><img src="imgs/4.jpg" alt="" srcset=""></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        let banner = document.querySelector('.banner');
+        let ol = banner.querySelector('.hd');
+        let ul = banner.querySelector('.bd ul');
+        let ulLen = ul.children.length;
+        let width = banner.offsetWidth;
+        console.log(width);
+        // 左右箭头
+        let arrow_l = document.querySelector('.arrow_l');
+        let arrow_r = document.querySelector('.arrow_r');
+
+        banner.addEventListener('mouseenter', function(){
+            // 展示左右按钮
+            arrow_l.style.display = 'block';
+            arrow_r.style.display = 'block';
+        });
+        banner.addEventListener('mouseleave', function(){
+            // 隐藏左右按钮
+            arrow_l.style.display = 'none';
+            arrow_r.style.display = 'none';
+        });
+        // 小圆点索引
+        for(let i = 0; i < ulLen; i++){
+            console.log(i)
+            let li = document.createElement('li');
+            ol.append(li);
+            li.setAttribute('data-index', i)
+            li.addEventListener('click', function(){
+                for(let i = 0; i < ulLen ; i++) {
+                    ol.children[i].className = '';
+                }
+                this.className = 'on';
+                let index = this.getAttribute('data-index');
+                animate(ul, -width*index);
+            })
+        }
+        arrow_l.addEventListener('click',function(){
+            if(ol.children.className == 'on') {
+                console.log(ol.children.getAttribute('data-index'))
+            }
+            
+            // animate(ul, )
+        })
+    </script>
+</body>
+</html>

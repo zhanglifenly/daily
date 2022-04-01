@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 数组[2,6,1,7,4] 和 、 平均值
+        function sum_ave() {
+            let a = [2,6,1,7,4];
+            let sum = 0;
+            for(let i = 0; i<a.length; i++) {
+                sum += a[i]
+            }
+            console.log(sum,sum/a.length)
+        }
+        sum_ave()
+
+        // 求数组最大值 [2,6,1,77,52,25,7]
+        function arr_max() {
+            let a = [10,2,6,1,77,99,52,25,7]
+            let max = 0;
+            for(let i=0; i<a.length; i++) {
+                if(a[i] - a[i+1] > 0) {
+                    a[i+1] = a[i]
+                    max = a[i]
+                }
+            }
+            console.log(max)
+        }
+        arr_max()
+        //求最小值
+        function arr_min() {
+            let a = [10,2,6,1,77,99,52,25,7]
+            let min = a[0];
+            for(let i=1; i<a.length; i++) {
+                if(min > a[i]) {
+                    min = a[i]
+                }
+            }
+            console.log(min)
+        }
+        arr_min()
+
+        // 讲数组[2,6,1,77,52,25,7] 转为字符串 并用 | 分割
+        function arr_str() {
+            let a = [10,2,6,1,77,99,52,25,7];
+            let str = ''
+            for(let i=1; i<a.length; i++) {
+                str= str + a[i] + '|'
+            }
+            console.log(str)
+        }
+        arr_str()
+
+        // 筛选数组 >10
+        function arr_sel() {
+            let a = [10,2,6,1,77,99,52,25,7];
+            let newA = []
+            for(let i=0; i<a.length; i++) {
+                if(a[i] >= 10) {
+                    newA[newA.length] = a[i]
+                }
+            }
+            console.log(newA)
+        }
+        arr_sel();
+
+        // 数组去重
+        
+    </script>
+</body>
+</html>

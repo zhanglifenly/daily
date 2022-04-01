@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{background-color: #ccc;}
+        div.parent {
+            font-size: 0;
+            text-align: center;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        div.parent::before {
+            content: "";
+            display: inline-block;
+            width: 0;
+            height: 100%;
+            vertical-align: middle;
+        }
+
+        div.child {
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        body,
+        html {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    welcome！
+    <div style="height: 100vh"></div>
+    <div class="parent" style="display: none;">
+        4545
+        <div class="child"></div>
+    </div>
+
+    <script>
+        // var a = {
+        //     value: 0,
+        //     valueOf() {
+        //         return ++this.value;
+        //     }
+        // }
+        // if(a==1 && a==2 && a==3) {
+        //     console.log(11)
+        // }
+    </script>
+    <script>
+        
+        let a = {
+            a() {
+                console.log(this)
+                setTimeout((a = 121) => {
+                    console.log(a, this)
+                }, 1000)
+            }
+        }
+        a.a()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ddd;
+            display: inline-block;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        let li = document.getElementsByTagName('li')
+        let flag = false;
+        let index = 0
+        for (let i = 0; i < li.length; i++) {
+            li[i].onmouseover = function(){
+                for (let i = 0; i < li.length; i++) {
+                    li[i].style.background = '#fff'
+                }
+                console.log(i)
+                for (let j = 0; j <= i; j++) {
+                    li[j].style.background = '#000'
+                }
+            }
+            li[i].onmouseout = function() {
+                for (let i = 0; i < li.length; i++) {
+                    li[i].style.background = '#fff'
+                }
+                if(flag) {
+                    for(let j=0;j<=index;j++){
+                        li[j].style.background = '#000'
+                    }
+                }
+            }
+            li[i].onclick = function () {
+                flag = true
+                index = i;
+            }
+        }
+    </script>
+</body>
+
+</html>

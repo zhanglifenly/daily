@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Wzry(name, type, blood) {
+            this.name = name,
+                this.type = type,
+                this.blood = blood,
+                this.attack = function (act) {
+                    console.log(act)
+                }
+        }
+        let lp = new Wzry('廉颇', '力量型', '500血量')
+        let hy = new Wzry('后羿', '射手型', '100血量', '远程')
+        console.log(lp.name, lp.attack('近战'))
+
+
+        // 电脑对象，有颜色、品牌等。
+        function Computer(color, weight, brand, type) {
+            this.color = color,
+                this.weight = weight,
+                this.brand = brand,
+                this.type = type,
+                this.seeMovie = function () {
+                    console.log('可以看电影')
+                },
+                this.listen = function () {
+                    console.log('可以听音乐')
+                },
+                this.play = function (e) {
+                    console.log(e)
+                }
+        }
+        var me = new Computer('粉色', '1.0KG', 'dell', 'zd500')
+        for (key in me) {
+            console.log(me[key])
+        }
+
+        // 写一个函数，实现反转任意数组
+        function reverse(arr) {
+            var newArr = []
+            for (var i = 0; i < arr.length; i++) {
+                newArr[newArr.length] = arr[arr.length - i - 1]
+            }
+            return newArr
+        }
+        console.log(reverse([1, 2, 3, 4, 5]))
+        // 写一个函数，实现对数字数组的排序
+        function sort(arr) {
+            for (var i = 0; i < arr.length; i++) {
+                for (var j = 0; j < arr.length - i - 1; j++) {
+                    if (arr[j] < arr[j + 1]) {
+                        var tmp = arr[j]
+                        arr[j] = arr[j + 1]
+                        arr[j + 1] = tmp
+                    }
+                }
+            }
+            return arr
+        }
+        console.log(sort([1, 6, 8, 4, 5]))
+    </script>
+</body>
+
+</html>

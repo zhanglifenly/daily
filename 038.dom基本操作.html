@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>按钮点击事件</h3>
+    <div id="demo1">
+        <button>按钮</button>
+        <input value="" type="text"/>
+    </div>
+    <script>
+        let demo1 = document.getElementById('demo1');
+        let oBtn = demo1.querySelector('button');
+        let oInp = demo1.querySelector('input')
+        oBtn.onclick = function(){
+            oInp.value = '我被点击了';
+            this.disabled = true
+        }
+    </script>
+    <h3>密码展示与隐藏</h3>
+    <div id="demo2">
+        <input type="password" value=""/>
+        <button>闭眼</button>
+    </div>
+    <script>
+        let demo2 = document.getElementById('demo2');
+        let oBtn2 = demo2.querySelector('button');
+        let oInp2 = demo2.querySelector('input');
+        let flag = true;
+        oBtn2.onclick = function() {
+            console.log('mm')
+            if(flag) {
+                oInp2.type = 'text'
+                oBtn2.innerHTML = '睁眼'
+                flag = false
+            } else {
+                oInp2.type = 'password'
+                oBtn2.innerHTML = '闭眼'
+                flag = true
+            }
+        }
+    </script>
+    <h3>获得失去焦点</h3>
+    <div id="demo3">
+        <input type="text" value="手机"/>
+    </div>
+    <script>
+        let demo3 = document.getElementById('demo3');
+        let search = demo3.querySelector('input');
+        search.onfocus = function() {
+            search.style.color = '#666'
+            if(search.value === '手机') {
+                search.value = ''
+            }
+        }
+        search.onblur = function() {
+            search.style.color = '#ccc'
+            if(search.value === '') {
+                search.value = '手机'
+            }
+        }
+    </script>
+    <h3>添加类名修改样式</h3>
+    <style>
+        .box {width: 200px;height: 200px;background: pink;}
+        .change {width: 100px;height: 100px;background: red;}
+    </style>
+    <div id="demo4">
+        <div class="box"></div>
+    </div>
+    <script>
+        let demo4 = document.getElementById('demo4');
+        let oBox = demo4.querySelector('.box');
+        oBox.onclick = function() {
+            // oBox.style.backgroundColor = 'red';
+            // oBox.style.width = '100px';
+            // oBox.style.height = '100px';
+            // 若样式太多 ，可以整合成一个类名控制
+            this.className = 'box change';
+        }
+    </script>
+    <h3>输入密码验证测试</h3>
+    <div id="demo5">
+        <input type="text" value=""/>
+        <span>6-16位字符</span>
+    </div>
+    <style>
+        #demo5 span{display: none;}
+        #demo5 span.red{color: red;}
+        #demo5 span.green{color: green;}
+    </style>
+    <script>
+        let demo5 = document.getElementById('demo5');
+        let text = demo5.querySelector('input');
+        let span = demo5.querySelector('span');
+        text.onfocus = function() {
+            span.style.display = 'block'
+            
+        }
+        text.onblur = function() {
+            console.log(text.value.length)
+            console.log(text.value.length < 6 || text.value.length > 16)
+            if(text.value.length < 6 || text.value.length > 16) {
+                console.log('red')
+                span.innerHTML = '请输入6-16位的字符';
+                span.className = 'red'
+            }else {
+                span.innerHTML = '输入正确';
+                span.className = 'green'
+            }
+        }
+    </script>
+    <h3>
+        新浪下拉菜单
+    </h3>
+    <div id="demo6">
+        <div class="nav">主菜单</div>
+        <ul class="navlist">
+            <li>子菜单1</li>
+            <li>子菜单2</li>
+            <li>子菜单3</li>
+        </ul>
+    </div>
+    <style>
+        .navlist{display: none;}
+    </style>
+    <script>
+        let demo6 = document.getElementById('demo6');
+        let nav = demo6.querySelector('.nav');
+        let navlist = demo6.querySelector('.navlist');
+        nav.onmouseover = function() {
+            navlist.style.display = 'block'
+        }
+        nav.onmouseout = function() {
+            navlist.style.display = 'none';
+        }
+    </script>
+    <h3>开关灯</h3>
+    <button id="btnclick">开关</button>
+    <script>
+        let btn = document.getElementById('btnclick');
+        let isopen = false;
+        let bodyColor = document.body.style.background
+        btn.onclick = function(){
+            if(isopen) {
+                document.body.style.background = '#fff'
+                isopen = false
+            } else{
+                document.body.style.background = '#000'
+                isopen = true
+            }   
+        }
+    </script>
+    <h3>下拉菜单</h3>
+    <style>
+         #nnav{padding-bottom: 500px;}
+        #nnav li ul{display: none;}
+        #nnav>li{display: inline-block;}
+    </style>
+    <ul id="nnav">
+        <li>
+            <a href="javascript:;">爱好</a>
+            <ul>
+                <li>看书</li>
+                <li>唱歌</li>
+                <li>打球</li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">球类</a>
+            <ul>
+                <li>足球</li>
+                <li>篮球</li>
+                <li>排球</li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        let navv = document.getElementById('nnav');
+        let liss =  nnav.children;
+        // console.log(lis);
+        for(let i = 0; i<liss.length; i++) {
+            liss[i].addEventListener('mousemove', function() {
+                this.children[1].style.display = 'block'
+            });
+            liss[i].addEventListener('mouseout', function() {
+                this.children[1].style.display = 'none'
+            })
+        }
+        
+    </script>
+</body>
+</html>

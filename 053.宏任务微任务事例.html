@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>测试的，我！</p>
+    <!-- 1、企业官网、官网商城。
+    2、推广H5页面，包含趣味活动抽奖页面。
+    3、vue重构媒介部推广项目，主要也是承接推广H5页面。
+    4、微信小程序、支付宝小程序开发。
+    5、公众号页面开发。 -->
+
+    <style>
+        #outer {
+            padding: 20px;
+            background: #616161;
+        }
+
+        #inner {
+            width: 100px;
+            height: 100px;
+            background: #757575;
+        }
+    </style>
+    <div id="outer">
+        <div id="inner"></div>
+    </div>
+    <script>
+        // 对象的应用
+        // function chang(o) {
+        //     o.siteUrl = "http://www.baidu.com";
+        //     console.log(o)
+        //     o = new Object();
+        //     console.log(o)
+        //     o.siteUrl = "http://zhihu.com"
+        // }
+        // let webSite = new Object();
+        // chang(webSite);
+        // console.log(webSite.siteUrl);
+
+        // 4,1, 2,6,3,  7,5
+
+        // 4163275
+        // async function async1() {
+        //     console.log(1); // 
+        //     await async2();
+        //     console.log(2);  //
+        // }
+
+        // function async2() {
+        //     console.log(3) //
+        // }
+
+        // console.log(4); //
+
+        // setTimeout(function(){
+        //     console.log(5); //
+        // }, 0) 
+        // async1();
+        // new Promise(function(resolve) {
+        //      // 
+        //     resolve();
+        //     console.log(6);
+        // }).then(function(){
+        //     console.log(7); // 
+        // }); 
+        // console.log(8);  // 
+
+        // 宏任务 微任务 事例
+        // const macroTaskList = [
+        //     ['task1'],
+        //     ['task2', 'task3'],
+        //     ['task4'],
+        // ]
+        // for (let macroIndex = 0; macroIndex < macroTaskList.length; macroIndex++) {
+        //     const microTaskList = macroTaskList[macroIndex]
+        //     // console.log(microTaskList, '----mark')
+        //     for (let microIndex = 0; microIndex < microTaskList.length; microIndex++) {
+        //         const microTask = microTaskList[microIndex]
+
+        //         // 添加一个微任务
+        //         if (microIndex === 1) {microTaskList.push('special micro task1')}
+        //         // 执行任务
+        //         console.log(microTask,microTaskList)
+        //     }
+        //     // 添加一个宏任务
+        //     if (macroIndex === 2) macroTaskList.push(['special macro task2'])
+        // }
+
+        // 
+        // const $inner = document.querySelector('#inner')
+        // const $outer = document.querySelector('#outer')
+        // function handler() {
+        //     console.log('click') // 直接输出
+        //     Promise.resolve().then(_ => console.log('promise')) // 注册微任务
+        //     setTimeout(_ => console.log('timeout')) // 注册宏任务
+        //     requestAnimationFrame(_ => console.log('animationFrame')) // 注册宏任务
+        //     $outer.setAttribute('data-random', Math.random()) // DOM属性修改，触发微任务
+        // }
+        // new MutationObserver(_ => {
+        //     console.log('observer')
+        // }).observe($outer, {
+        //     attributes: true
+        // })
+        // $inner.addEventListener('click', handler)
+        // $outer.addEventListener('click', handler)
+
+        //
+        setTimeout(_ => console.log(4))
+
+        async function main() {
+            console.log(1)
+            await Promise.resolve()
+            console.log(3)
+        }
+
+        main()
+
+        console.log(2)
+        // 怎么知道obj是数组的 start
+        // var obj = {
+        //     '0': 3,
+        //     '1': 4,
+        //     'length': 2,
+        //     'splice': Array.prototype.splice,
+        //     'push': Array.prototype.push
+        // }
+        // obj.push(1);
+        // // obj.push(2);
+        // console.log(obj)
+        // 怎么知道obj是数组的 end
+
+        // 考察赋值表达式 start
+        // var a = {},
+        // b = '123',
+        // c = 123;
+        // a[b]='b';
+        // a[c]='c';
+        // console.log(a);
+
+        // var a = {},
+        // b = Symbol('123'),
+        // c = Symbol('123');
+        // a[b] = 'b';
+        // a[c] = 'c';
+        // console.log(a);
+
+        // var a = {},
+        // b = {key:'123'},
+        // c = {key:'456'};
+        // a[b] = 'b';
+        // a[c] = 'c';
+        // console.log(a);
+        // 考察赋值表达式 end
+
+        // const getJSON = function(url) {
+        //     const promise = new Promise(function(reslove, reject) {
+        //         const handler = function() {
+        //             if(this.readyState !== 4) {
+        //                 return 
+        //             }
+        //             if(this.status === 200) {
+        //                 reslove(this.response);
+        //             } else {
+        //                 reject(new Error(this.statusText));
+        //             }
+        //         };
+        //         const client = new XMLHttpRequest();
+        //         client.open("GET", url);
+        //         client.onreadystatechange = handler;
+        //         client.responseType = "json";
+        //         client.setRequestHeader("Accept", "application/json");
+        //         client.send();
+        //     })
+        //     return promise
+        // }
+        // getJSON("https://xcx01.bhfyz.com/Wxpayunionv3/get_goods_name?goods_id=1").then(function(json){
+        //     console.log("内容" + json);
+        // }, function(error) {
+        //     console.log('出错了', error);
+        // })
+
+        // function Foo() {
+        //     Foo.a = function(){
+        //         console.log(1);
+        //     }
+        //     this.a = function(){
+        //         console.log(2)
+        //     }
+        // }
+
+        // // Foo.prototype.a = function() {
+        // //     console.log(3)
+        // // }
+        // Foo.a = function() {
+        //     console.log(4)
+        // }
+
+        // Foo.a();  // 4 
+        // console.log(Foo, Foo.a, '------foo.a')
+        // let obj = new Foo();
+        // // obj.a();  // 2
+        // // obj.__proto__.a();  // 3
+        // Foo.a();   // 1
+        // console.log(Foo,Foo.a, '-----new之后')
+
+
+
+        function Page() {
+            this.init();
+            // console.log(this.obj.p);
+        }
+        Page.prototype = {
+            init: function () {
+                // console.log('121212121');
+                // console.log(this, 'fun init')
+                this.btnclick()
+            },
+            obj: {
+                p: ''
+            },
+            btnclick: function () {
+                // obj.p.addEventListener('click', function(){
+                //     console.log('被电击了')
+                // })
+            }
+        }
+        window.onload = function () {
+            new Page();
+        }
+    </script>
+    <script>
+        let container = document.querySelector('p');
+        window.addEventListener('message', function (e) {
+            container.innerHTML = "收到" + e.origin + '消息' + e.data.a + '\n' + e.data.b
+            if (e.source != window.parent) return;
+            var color = container.style.backgroundColor;
+            window.parent.postMessage(color, '*');
+        }, false);
+    </script>
+</body>
+
+</html>

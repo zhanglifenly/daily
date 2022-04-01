@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Date 对象用于处理日期和时间。
+        // 日期对象是用new Date()创建的。
+        Date.prototype.myMet = function () {
+            switch (this.getMonth()) {
+                case 0:
+                    this.myProp = "January";
+                    break;
+                case 1:
+                    this.myProp = "February";
+                    break;
+                case 2:
+                    this.myProp = "March";
+                    break;
+                case 3:
+                    this.myProp = "April";
+                    break;
+                case 4:
+                    this.myProp = "May";
+                    break;
+                case 5:
+                    this.myProp = "June";
+                    break;
+                case 6:
+                    this.myProp = "July";
+                    break;
+                case 7:
+                    this.myProp = "August";
+                    break;
+                case 8:
+                    this.myProp = "September";
+                    break;
+                case 9:
+                    this.myProp = "October";
+                    break;
+                case 10:
+                    this.myProp = "November";
+                    break;
+                case 11:
+                    this.myProp = "December";
+                    break;
+            }
+        }
+        let d = new Date()
+        d.myMet();
+        let month = d.myProp
+        // console.log(d.myProp)
+    </script>
+    <script>
+        // 定义函数dateFormat  使其可以发挥以下作用：
+
+        // dateFormat(new Date('2020-12-01'), 'yyyy/MM/dd') // 2020/12/01
+        // dateFormat(new Date('2020-04-01'), 'yyyy/MM/dd') // 2020/04/01
+        // dateFormat(new Date('2020-04-01'), 'yyyy年MM月dd日') // 2020年04月01日
+
+        // function dateFormat(date, format) {
+        //     let oDate = new Date(date);
+        //     let yyyy = oDate.getFullYear();
+        //     let MM = oDate.getMonth() + 1;
+        //     let dd = oDate.getDay()
+        //     console.log(yyyy + format.substr(format.indexOf('yyyy') + 4, 1) + MM + format.substr(format.indexOf('MM') + 2, 1) + dd + format.substr(format.indexOf('dd') + 2, 1))
+        // }
+
+        // dateFormat('2020-12-01', 'yyyy年MM月dd日');
+
+
+        // const dateFormat = (dateInput, format) => {
+        //     var day = dateInput.getDate()
+        //     var month = dateInput.getMonth() + 1
+        //     var year = dateInput.getFullYear()
+        //     format = format.replace(/yyyy/, year)
+        //     format = format.replace(/MM/, month)
+        //     format = format.replace(/dd/, day)
+        //     return format
+        // }
+    </script>
+    
+    <script>
+        // 计算时间,倒数
+        // function countBack(start, end) {
+
+        // }
+        // countBack('2021.11.30', '2021.12.15')
+    </script>
+    <!-- <script>
+        // 计算时间是否到期
+        var str = '2020-12-28 07:00:00'
+        Date.prototype.diff = function(date) {
+            return (this.getTime() - date.getTime()) / (24*60*60*1000);
+        }
+        let date = new Date(str);
+        let now = new Date();
+        console.log(now.diff(date))
+    </script> -->
+    <script type="text/javascript">
+        var str = '2021-12-25';
+        str = str.replace(/-/g, "/");
+        var date = new Date(str);
+        var now = new Date();
+        if (date < now) {
+            this.isRed = true; //例如过期了就标红
+            alert('is over...');
+        } else {
+            var time = date - now;
+            alert('还剩' + (time / 1000 / 60 / 60 / 24) + 'Day');
+        }
+    </script>
+</body>
+
+</html>

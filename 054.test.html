@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // b = 10;
+        (function () {
+            b = 20;
+            // console.log(b)
+        })();
+
+        // var a = 10;
+        // (function(){
+        //     console.log(a)   // undefined
+        //     a = 5
+        //     console.log(window.a);   // 10
+        //     var a = 20;
+        //     console.log(a)   //20
+        // })()
+
+        // var obj = {
+        //     '2': 3,
+        //     '3': 4,
+        //     'length': 2,
+        //     'splice': Array.prototype.splice,
+        //     'push': Array.prototype.push
+        // }
+        // obj.push(1)
+        // obj.push(2)
+        // console.log(obj)
+
+        // var a = {n: 1};
+        // var b = a;
+        // a.x = a = {n:2};
+        // console.log(a.x); // unefined
+        // console.log(b.x); //{n:2}
+
+        // 手写bind/call/apply
+        // Function.prototype.MyCall = function(context) {
+        //     const args = [...arguments].slice(1);
+        //     context.fn = this;
+        //     const result = context.fn(...args);
+        //     delete context.fn;
+        //     return result;
+        // }
+        // var obj = {
+        //   name: 'obj1',
+        //   sayName: function() {
+        //       console.log(this,111)
+        //     //   return this.name + '1212'
+        //   }  
+        // }
+        // var sayName1 = obj.sayName;
+        // console.log(sayName1())
+        // 这里需要明白一点，函数名仅仅是一个包含指针的变量，函数是复杂数据类型，所以函数名就只是一个指针，指向堆中的内存地址！所以sayName此时只是复制了指针地址，所以，上面代码改写成下面就很清晰了。
+        // var sayName = function(){
+        //     console.log(this.name, this)
+        //     return this.name
+        // }
+        // var obj = {
+        //     name: 'objj',
+        //     sayName:sayName
+        // }
+        // console.log(obj.sayName())
+        // console.log(sayName())
+
+        // var obj = {
+        //     a: 2,
+        //     foo: function () {
+        //         console.log(this)
+        //         console.log(this.a)
+        //     }
+        // }
+        // var a = 3;        
+        // setTimeout(obj.foo, 0) // this指向window
+
+        // var name = 'window';
+        // var obj = {
+        //     name: 'obj',
+        //     fn: function () {
+        //         (function () {
+        //             console.log(this)
+        //         })()
+        //     }
+        // }
+        // obj.fn()
+
+        // var name = 'window'
+        // var obj = {
+        //     name: 'obj',
+        //     fn: function () {
+        //         (() => { //改成箭头函数
+        //             console.log(this.name)
+        //         })()
+        //     }
+
+        // }
+        // obj.fn()
+// foo.fn = bar;
+        // console.log(foo.fn('daisy',19));
+
+        // var bindFoo = bar.bind(foo, 'daisy');
+        // var obj = new bindFoo('18', 'bbb');
+        // console.log(obj.habit);
+        // console.log(obj.friend);
+        var value = 2;
+        var foo = {
+            value: 1
+        };
+        function bar(name, age) {
+            this.habit = 'shopping';
+            console.log(this.value);
+            console.log('name:', name);
+            console.log('age:', age);
+        }
+        bar.prototype.friend = 'kenvin';
+        Function.prototype.bind2 = function(obj) {
+            console.log( 12121,...arguments)
+            // console.log(this)
+            obj.fn = this;
+            console.log(obj)
+            var args = [...arguments].slice(1);
+            var result;
+            result = obj.fn(...args);
+            return function() {
+                return result;
+            }
+        }
+        Function.prototype.bind3 =  function(obj){
+            obj.fn = this;
+            let args = [...arguments].slice(1);
+            let result = obj.fn(...args)
+            return function(){return result};
+        }
+        var bindFoo = bar.bind3(foo, 'daisy');
+
+        var obj = new bindFoo('18', 'bbb');
+
+        
+        // 第三版
+        // Function.prototype.bind2 = function (context) {
+        //     var self = this;
+        //     console.log(self)
+        //     var args = Array.prototype.slice.call(arguments, 1);
+        //     console.log(args)
+        //     var fBound = function () {
+        //         var bindArgs = Array.prototype.slice.call(arguments);
+        //         console.log(bindArgs)
+        //         // 当作为构造函数时，this 指向实例，此时结果为 true，将绑定函数的 this 指向该实例，可以让实例获得来自绑定函数的值
+        //         // 以上面的是 demo 为例，如果改成 `this instanceof fBound ? null : context`，实例只是一个空对象，将 null 改成 this ，实例会具有 habit 属性
+        //         // 当作为普通函数时，this 指向 window，此时结果为 false，将绑定函数的 this 指向 context
+        //         return self.apply(this instanceof fBound ? this : context, args.concat(bindArgs));
+        //     }
+        //     // 修改返回函数的 prototype 为绑定函数的 prototype，实例就可以继承绑定函数的原型中的值
+        //     fBound.prototype = this.prototype;
+        //     return fBound;
+        // }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>上午好</div>
+    <script>
+        // 根据不同时间，上午显示上午好，加图，中午，晚上
+        function time() {
+            let oDiv = document.querySelector('div')
+            let oDate = new Date() 
+            let time = oDate.getHours()
+            console.log(time)
+            if(time < 12) {
+                oDiv.innerHTML = '上午好'
+            } else if(time < 18){
+                oDiv.innerHTML = '下午好'
+            } else {
+                oDiv.innerHTML = '晚上好'
+            }
+        }
+        time()
+    </script>
+</body>
+</html>

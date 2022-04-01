@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="button">anniu</button>
+    <script>
+        // function throttle(fn, delay) {
+        //     let istrue = false
+        //     setTimeout(function () {
+        //         istrue = true
+        //         if (istrue) {
+        //             console.log(fn)
+        //         }
+        //     }, delay)
+        // }
+        
+        // window.onresize = function(){
+        //     throttle('1', 2000)
+        // }
+    </script>
+    <script>
+        function throttle(fn, wait) {
+            let timer = null;
+            return function() {
+                
+                let context = this;
+                console.log(context, 555)
+                let args = arguments;
+                if(!timer) {
+                    timer = setTimeout(function() {
+                        console.log(this, 6666)
+                        fn.apply(context, args);
+                        timer = null;
+                    },wait)
+                }
+            }
+        }
+        function handle() {
+            console.log(Math.random())
+        }
+        document.getElementById('button').onclick = throttle(handle, 2000)
+    </script>
+</body>
+
+</html>

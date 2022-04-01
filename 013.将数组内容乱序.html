@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        题目： 将数组内容乱序
+        编写函数random，满足
+        random([1,2,3,4]);  // 输出的可能是[1,2,3,4] / [1,3,4,2]等
+     -->
+    <script>
+        function random(arr) {
+            let newArr = []
+            while(arr.length > 0) {
+                let idx = Math.floor(Math.random()*arr.length)
+                console.log(idx)
+                newArr.push(arr[idx])
+                arr.splice(idx, 1)
+            }
+            console.log(newArr)
+        }
+        random(['a', 'b', 'c', 'e'])
+    </script>
+</body>
+
+</html>

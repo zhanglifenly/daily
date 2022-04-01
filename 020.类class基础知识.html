@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 类是函数的一种，不使用关键字function来对其初始化，而是使用关键字class,并在constructor()方法中分配属性
+
+
+        // constructor()方法 用于创建和初始化在类中创建的对象。
+        // 初始化类时，constructor() 方法会被自动调用，并且它必须使用确切的名称“constructor”, 若没有构造方法，则会添加一个不可见的空构造方法。
+
+        // 注意：一个类不能使用多个constructor()方法，这将抛出SyntaxError
+        // 可以使用super()方法来调用父类的构造方法。
+        // class Car{
+        //     constructor(brand) {
+        //         this.carname = brand;
+        //     }
+        // }
+        // mycar = new Car('Ford');
+
+        // 可以使用super()方法来调用父类的构造方法，从而可以访问父类的属性和方法。
+        class Person{
+            constructor(name, sex) {
+                this.sex = sex;
+                this.name = name;
+            }
+            fun() {
+                return this.name + 'can clean room';
+            }
+        }
+        // extends 关键字用于创建另一个类（父类）的子类。
+        // 子类继承了另一个类的所有方法。
+        class Xm extends Person {
+            constructor(name, sex, age) {
+                super(name,sex);
+                this.age = age
+            }
+            fun2() {
+                return this.fun() + ',He is ' + this.age + ' years old,' + 'He is a ' + this.sex 
+            }
+        }
+
+        xiaoming = new Xm("xiaoming", "man", "18");
+        console.log(xiaoming.fun2())
+
+        // static 关键字为类定义静态方法。
+        class Car {
+            constructor(brand) {
+                this.name = brand;
+            }
+            static hello() {
+                return "hello!!"
+            }
+        }
+        myCar =  new Car("xixi")
+        console.log(Car.hello())    // 静态方法直接在类上调用，而无需创建类的实例/对象
+        console.log(myCar.hello())  // 对象上调用静态方法会报错
+        
+    </script>
+</body>
+</html>

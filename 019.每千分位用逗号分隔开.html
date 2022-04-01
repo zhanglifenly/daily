@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function sum(num1,num2) {
+            return num1+num2
+        }
+    </script>
+    <script>
+        var str = '54411.1';
+        function format(str){
+            let left = '',
+                right = '',
+                pos = str.indexOf('.');
+            if(pos !== -1) {
+                left = str.substr(0, pos);
+                right = str.substr(pos);
+            } else {
+                left = str;
+            }
+            let len = left.length,
+                left_new = '';
+            for(let i = len - 1, n = 0; i >= 0; i--) {
+                n++;
+                left_new = left[i] + left_new;
+                if(n%3 == 0 && i != 0) {
+                    left_new = ',' + left_new;
+                }
+            }
+            return left_new + right;
+        }
+        console.log(format(str))
+    </script>
+    <script>
+        // function format(val) {
+        //     let point;
+        //     if (val.indexOf('.') !== -1) {
+        //         // 提取小数点
+        //         point = val.slice(val.indexOf('.'))
+        //         console.log(point)
+        //     } else {
+        //         // 木有小数点
+        //         let num = val.reserve()
+        //         console.log(num)
+        //         if (num.length > 3) {
+        //             for (item in num) {
+        //                 if ((item) % 3 == 1) {
+        //                     num[item] + ','
+        //                     console.log(num[item] + ',')
+        //                 }
+        //             }
+        //             // console.log(num)
+        //         }
+        //     }
+        // }
+        // format('5211')
+    </script>
+    <script>
+        // let format = n => {
+        //     let num = n.toString()
+        //     let len = num.length
+        //     if (len <= 3) {
+        //         return num
+        //     } else {
+        //         let remainder = len % 3
+        //         if (remainder > 0) { // 不是3的整数倍
+        //             return num.slice(0, remainder) + ',' + num.slice(remainder, len).match(/\d{3}/g).join(',')
+        //         } else { // 是3的整数倍
+        //             return num.slice(0, len).match(/\d{3}/g).join(',')
+        //         }
+        //     }
+        // }
+        // format(1232323)  // '1,232,323'
+    </script>
+    <script>
+        // let format = n => {
+        //     let num = n.toString() // 转成字符串
+        //     let decimals = ''
+        //     // 判断是否有小数
+        //     num.indexOf('.') > -1 ? decimals = num.split('.')[1] : decimals
+        //     let len = num.length
+        //     if (len <= 3) {
+        //         return num
+        //     } else {
+        //         let temp = ''
+        //         let remainder = len % 3
+        //         decimals ? temp = '.' + decimals : temp
+        //         if (remainder > 0) { // 不是3的整数倍
+        //             return num.slice(0, remainder) + ',' + num.slice(remainder, len).match(/\d{3}/g).join(',') + temp
+        //         } else { // 是3的整数倍
+        //             return num.slice(0, len).match(/\d{3}/g).join(',') + temp
+        //         }
+        //     }
+        // }
+        // format(12323.33)  // '12,323.33'
+    </script>
+</body>
+
+</html>

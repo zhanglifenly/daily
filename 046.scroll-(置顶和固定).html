@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div,body{padding:0;margin:0;}
+        .fixbox{position: absolute;right: 20px;top: 56%;width: 100px;text-align: center;background: #ccc;}
+        .fixbox.fixed {position: fixed;top: 0;}
+        ul,li{list-style: none;margin:0;padding: 0;}
+        li{padding:20px 0;}
+        li.totop{display: none;}
+        .bar{height: 60px;background: #abcdef;}
+        .banner {height: 400px;background-color: pink;}
+        .context {height: 900px;background-color: #f1f1f1;}
+        .footer{height: 60px;background-color: #abcdef;}
+    </style>
+</head>
+<body>
+    <div class="bar">bar</div>
+    <div class="banner">banner</div>
+    <div class="context">context</div>
+    <div class="footer">footer</div>
+    <ul class="fixbox">
+        <li>客户服务</li>
+        <li class="totop">置顶</li>
+    </ul>
+    <script>
+        let fixbox = document.querySelector('.fixbox');
+        let totop = document.querySelector('.totop');
+        document.addEventListener('scroll', function(e){
+            // console.log(window.pageYOffset)
+            let fixboxTop = fixbox.offsetTop;
+            if(window.pageYOffset > fixboxTop) {
+                totop.style.display = 'block';
+                fixbox.style.position = 'fixed';
+                fixbox.style.top = '0px';
+            } else {
+                totop.style.display = 'none';
+                fixbox.style.position = 'absolute';
+                fixbox.style.top = '56%';
+            }
+        });
+        totop.addEventListener('click', function(){
+            
+            // console.log(window.scrollTop)
+            // window.scrollTop = 0
+        })
+    </script>
+</body>
+</html>

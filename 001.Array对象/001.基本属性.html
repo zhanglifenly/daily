@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1、prototype 属性使您有能力向对象添加属性和方法,所有的数组将被设置属性，它是默认值。所有的数组都可以使用该方法。
+        // 2、注意：在Javascript对象中，Prototype是一个全局属性。
+        //  所有浏览器都支持prototype
+        Array.prototype.myUcase = function() {
+            for(let i = 0; i < this.length; i++) {
+                this[i] = this[i].toUpperCase();
+            }
+        }
+    </script>
+
+    <script>
+        // 不改变原数组的方法
+        // 1、contact  拼接数组元素
+        // 2、entries (ie不支持)
+
+        // 3、every() 方法检测数组中的所有元素是否通过测试（如找到flase,则不执行剩下的。没找到fals，则返回ture）
+        let ages = [36, 33, 16, 40];
+        function checkAdult(age) {
+            return age >= 18
+        }
+        function myFunction() {
+            console.log(ages.findIndex(checkAdult))
+        }
+        // 4、filter() 返回符合要求的元素。
+        // 5、find()返回数组中第一个通过测试的元素值（并不检测剩余的值）
+        // 6、findIndex() 方法返回数组中第一个通过测试的元素的索引，（没有匹配的返回-1）
+
+
+
+        // 改变原数组的方法
+        //  1、copyWithin() 复制数组的某一段
+        //  2、fill() (Ie不支持)
+        
+
+
+        // 方法
+        //  1. forEach(当前元素的值，当前元素的索引，当前元素所属的数组对象) 为数组中的每一个元素调用一次函数。遍历的是元素的值
+        let sum = 0;
+        let nums = [1,8,3,4];
+        nums.forEach(item => {
+            sum += item
+        })
+
+        // 2. from() ie不支持
+
+        // 3. includes(要搜索的元素， 开始搜索的位置（可选）) 方法确定数组是否包含指定的元素（有则返回true，无返回false）
+        //      区分大小写
+        let money = ['a', 5, 10, 50, 100];
+        money.includes('A');   // 返回false
+
+        // 4. indexOf(检索的值，指定检索开始的位置【可选】) 在数组中搜索指定项目，并返回其位置。
+            // 若检索的东西出现多次，返回的均是【第一次】的索引
+            // 若未找到，则返回 -1
+            // 第一项为0，以此类推
+        let prize = ['中奖','中特等奖','中奖', '中一等奖']
+        // console.log(prize.indexOf('中奖'))  //0
+
+        // 5. lastIndexOf()
+            // 若未指定位置，则从末尾开始搜索，指定了则从指定位置开始
+            // 未找到返回-1
+            // 若检索的东西出现多次，返回的均是【最后一次】出现的索引
+            // console.log(prize.lastIndexOf('中奖'))  //2
+
+        // 6. isArray(需测试的对象) 方法确定对象是否为数组，若为数组则返回true,否则为false
+        // console.log(Array.isArray(prize));
+
+        // 7. join() 将数组作为字符串返回。，默认由逗号隔开 【不改变原始数组】
+        // console.log(money.join());  // a,5,10,50,100
+
+        // 8. key() 返回带有数组键的Array Iterator 对象 【ie不支持】
+
+        // 9. map() 【不改变原始数组】
+        let numbers = [65, 44, 12, 3];
+        numbers.map(item => {
+            return item * 10
+        })
+        // 10. pop() 删除数组的【最后一个】元素 【会改变数组的长度】
+        // console.log(numbers.pop(), numbers)
+
+        // 11. shift() 删除数组【第一个】元素，【会改变数组的长度】
+        // console.log(numbers.shift(), numbers)
+        // 12. push() 向数组末尾添加新项目，并返回新长度【改变原始数组】
+        numbers.push(77,58)
+        console.log(numbers)
+
+        // 13. reduce(total,当前元素的值，当前元素的数组索引[可选]，当前元素所属的数组对象[可选]) 将数组缩减为单个值【不改变原始数组】
+            // 例如：[5,1,3] ---(reduce之后)---  5-1 = 4， 4-3 = 1 --> total = 1
+        numbers.reduce((total,item) => {
+            return total - item
+        })
+
+        // 14. reduceRight() 从右到左将数组缩减为单个值
+            // 例如：[5,1,3] ---(reduce之后)---  3-1 = 2， 2-5 = -3 --> total = -3
+        numbers.reduceRight((total, item) => {
+            return total - item
+        })
+
+        // 15. reverse() 反转数组中元素的顺序 【改变原始数组】
+        // console.log(numbers.reverse())
+
+        // 16. slice(指定开始的位置（可选），结束选择的位置（可选）) 以新的数组对象，返回数组中被选中的元素。【不改变原始数组】
+            // 例如 numbers = [58, 77, 3, 12, 44, 65], numbers.slice(0,2) -->  返回[58, 77]
+        // console.log(numbers.slice(0,2)) // [58,77] 生成新的，不改变原始的数组
+
+        // 17. some(当前元素的值，当前元素的数组索引（可选），当前元素所属的数组对象（可选）) 方法检查数组中的任何元素是否通过测试  【不改变原始数组】
+        // 找不到则返回false
+
+        numbers.some(item => {
+            return item > 20    //返回true
+        })
+
+        // 18. sort() 对数组的项目进行排序【改变原始数组】
+            // 默认是按字母和升序将值作为字符串进行排序
+            // 但是如果数字按字符串排序的话，则会可能产生不正确的答案，如 ‘25’ 和 ‘100’ 比 ，‘25’比一百大（可通过比较函数来解决）
+        // console.log(numbers.sort())     //  [12, 3, 44, 58, 65, 77] 答案有出入
+        // console.log(numbers.sort((a,b) => {
+        //     return a-b                  // [3, 12, 44, 58, 65, 77]  通过此方法可解决
+        // }))
+
+        // 19. splice(idx1, idx2, idx3)方法向/从数组添加/删除项目，并返回删除的项目 【改变原始数据】
+        // 参数 idx1:指定在什么位置添加/删除项目，使用负值指定从数组末尾开始的位置
+        //      idx2:可选。要删除的项目数。如果设置为 0，则不会删除任何项目
+        //      idx3:可选。要添加到数组中的新项目。
+        //  numbers:[65, 44, 12, 3, 77, 58]
+        //console.log(numbers.splice(1, 1))   // 返回被删数值44
+
+        // 20. toString()方法返回包含所有数组值的字符串，以逗号分隔 【不改变原始数组】
+        //  numbers:[65, 12, 3, 77, 58]
+        //console.log(numbers.toString())     // 65,12,3,77,58
+
+        // 21. unshift() 方法将新项添加到数组的【开头】，并返回数组新的长度 【改变原始数组】
+        console.log(numbers.unshift(22,25))     // 返回值是数组的长度
+
+        // 22. valueOf() 方法返回数组 【不改变原始数组】
+        console.log(numbers.valueOf() , 'valueOf')
+    </script>
+</body>
+</html>

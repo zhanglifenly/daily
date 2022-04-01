@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 打印1-100岁
+        (function person() {
+            let i= 1;
+            while(i<=100){
+                // console.log(i)
+                i++
+            }
+        })()
+        // 计算1-100和
+        function sum() {
+            let sum =0; let i=1;
+            while(i<=100){
+                sum+=i
+                i++
+            }
+            console.log(sum)
+        }
+        sum()
+
+        function love() {
+            let result = prompt('你爱我吗？')
+            while(result !== '我爱你') {
+                result = prompt('你爱我吗？')
+            }
+            alert('我也爱你呀')
+        }
+        love()
+    </script>
+</body>
+</html>

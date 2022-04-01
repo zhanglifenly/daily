@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        题目：将数组元素按age字段的值，从小到大排序
+        编写函数sortAge，满足
+        sortAge([
+            {age: 19, name: 'jack'},
+            {age: 5, name: 'apple'},
+            {age: 12, name: 'lynn'},
+            {age: 25, name: 'david'}
+        ]);
+        // 输出
+        [
+            {age: 5, name: 'apple'},
+            {age: 12, name: 'lynn'},
+            {age: 19, name: 'jack'},
+            {age: 25, name: 'david'}
+        ]
+     -->
+    <script>
+        function sortAge(arr) {
+            let temp = ''
+            for (let i = 0; i < arr.length; i++) {
+                for (let j = 0; j < arr.length - 1 - i; j++) {
+                    if (arr[j].age > arr[j + 1].age) {
+                        temp = arr[j]
+                        arr[j] = arr[j + 1]
+                        arr[j + 1] = temp
+                    }
+                }
+
+            }
+            console.log(arr)
+        }
+        sortAge([
+            { age: 25, name: 'david' },
+            { age: 19, name: 'jack' },
+            { age: 5, name: 'apple' },
+            { age: 12, name: 'lynn' }
+        ])
+    </script>
+</body>
+
+</html>

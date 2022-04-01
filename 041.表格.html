@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        tr,
+        th,
+        td {
+            border: 1px solid #000;
+            text-align: center;
+        }
+
+        th,
+        td {
+            width: 200px;
+        }
+
+        tr.on {
+            background: pink;
+        }
+        #imgs {position: absolute;width: 100px;}
+    </style>
+</head>
+
+<body>
+    <img src="imgs/12.png" id="imgs"/>
+    <table>
+        <thead>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        let datas = [
+            {
+                name: '张yi',
+                age: 18,
+                sex: '女'
+            },
+            {
+                name: '李四',
+                age: 18,
+                sex: '女'
+            },
+            {
+                name: '王八',
+                age: 18,
+                sex: '女'
+            }
+        ]
+        let tbody = document.querySelector('tbody');
+        // 动态添加数据
+        for (let i = 0; i < datas.length; i++) {
+            let tr = document.createElement('tr');
+            tbody.appendChild(tr)
+            for (let k in datas[i]) {
+                let td = document.createElement('td');
+                tr.appendChild(td)
+                // 给每个td添加数据
+                td.innerHTML = datas[i][k]
+            }
+            // 最后动态添加删除按钮
+            let td = document.createElement('td');
+            td.innerHTML = '<a href="javascript:;" class="remove">删除</a>'
+            tr.appendChild(td)
+        }
+
+        let trs = tbody.children
+        for (let i = 0; i < trs.length; i++) {
+            // 隔行变色
+            trs[i].onmouseover = function () {
+                for (let i = 0; i < trs.length; i++) {
+                    trs[i].className = ''
+                }
+                this.className = 'on'
+            }
+            trs[i].querySelector('.remove').onclick = function () {
+                tbody.removeChild(this.parentNode.parentNode)
+            }
+        }
+
+        let img = document.getElementById('imgs');
+        document.addEventListener('mousemove', function(e){
+            let x = e.pageX;
+            let y = e.pageY;
+            img.style.left = x+10  + 'px';
+            img.style.top = y+10  + 'px';
+        })
+    </script>
+</body>
+
+</html>

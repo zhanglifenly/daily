@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1、任意两数的任意运算
+        function fn_cal(num1, num2) {
+            return [num1+num2, num1-num2, num1*num2, num1/num2]
+        }
+        console.log(fn_cal(1,2))
+        // 2、任意两数，求最大值
+        function fn_max(num1, num2) {
+            return num1 > num2 ? num1 : num2
+        }
+        // 3、任意三数的最大值
+        function fn_max3(num1,num2,num3) {
+            return
+        }
+        // 4、判断是否素数
+        function fn_num(num) {
+            for(let i = 2; i*i < num; ++i){
+                if(num%i == 0) {
+                    return false
+                }
+            }
+            return num
+        }
+    </script>
+</body>
+</html>

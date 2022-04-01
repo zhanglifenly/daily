@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input value="" type="password" id="inp"/>
+    <button onclick="password()">按钮</button>
+    <div id="strong"></div>
+    <script>
+        function password() {
+            let strong = document.getElementById('strong')
+            let $password = document.getElementById('inp')
+            let password = $password.value
+            let num=0,wa=0,wb=0
+            console.log(password.length)
+            if(password.length<8 || password.length>16) {
+                alert('密码长度为8~16位')
+                return false
+            } else {
+                for(let i = 0; i<password.length;i++) {
+                    let str = password.charCodeAt(i)
+                    if(str>=48 && str<=57) num = 1 //数字范围48-57
+                    if(str>=65 && str<=90) wa = 1   //A-B范围65-90
+                    if(str>=97 && str<=122) wb = 1  // a-b范围97-122
+                }
+                if(!(num && wa && wb)) {
+                    alert('密码需包含数字大小写字母')
+                }else{
+                    if(num+wa+wb == 3) {strong.innerHTML = '强'}
+                    if(num+wa+wb == 2) {strong.innerHTML = '中'}
+                    if(num+wa+wb == 1) {strong.innerHTML = '弱'}
+                }
+                
+            }
+        }
+    </script>
+</body>
+</html>

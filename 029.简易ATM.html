@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let money = 100;
+        let result = prompt('请输入您要的操作：\n 1、存钱 \n 2、取钱 \n 3、显示余额 \n 4、退出')
+        if(result == '1') {
+            let inM = prompt('请输入存的钱数');
+            alert(money +　parseInt(inM))
+        } else if(result == '2') {
+            let outM = prompt('请输入要取的钱数')
+            if(money - outM > 0) {
+                alert(money - outM)
+            }else {
+                alert('您的余额不足')
+            }
+            
+        } else if(result == '3') {
+            alert('您的余额是100元')
+        } else{
+            alert('你选择了退出')
+        }
+    </script>
+</body>
+</html>

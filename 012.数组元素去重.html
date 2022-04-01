@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        题目： 将数组元素去重，其中数组元素均为基本类型
+        编写函数uniq, 满足
+        uniq([1,2,2,3,4,4,4,4]);    // 输出 [1,2,3,4]
+        uniq([1,2,'M','e','r','r','y']);    //  输出[1,2,'M','e','r','y']
+     -->
+     <script>
+         function uniq(arr) {
+             let arrUniq = []
+            arr.forEach(element => {
+                if(arrUniq.indexOf(element) === -1) {
+                    arrUniq.push(element)
+                }
+            });
+            console.log(arrUniq)
+         }
+         uniq([1,2,'M','e','r','r','y'])
+     </script>
+</body>
+</html>
